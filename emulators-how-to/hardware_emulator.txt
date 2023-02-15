@@ -1,0 +1,31 @@
+Chip interface:
+
+CHIP XOR {
+    IN a, b; // INPUT PINS
+    OUT out; // OUTPUT PIN
+
+    // Implementation
+    PARTS:
+    // List down various parts
+    Not(in=a, out=nota); // Implicit Use of builtin
+    Not(in=b, out=notb);
+    And(a=nota, b=b, out=out1);
+    And(a=a, b=notb, out=out2);
+
+    Or(a=out1, b=out2, out=out);
+
+}
+
+Using builtin:
+
+CHIP XOR {
+    IN a, b; // INPUT PINS
+    OUT out; // OUTPUT PIN
+
+    BUILTIN XOR; // Explicit Use of builtin
+}
+
+
+Test Script:
+    create cmp file for truth table, 
+    create .tst file

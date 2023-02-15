@@ -1,0 +1,14 @@
+CHIP XOR {
+    IN a, b; // INPUT PINS
+    OUT out; // OUTPUT PIN
+
+    // Implementation
+    PARTS:
+    Not(in=a, out=nota);
+    Not(in=b, out=notb);
+    And(a=nota, b=b, out=out1);
+    And(a=a, b=notb, out=out2);
+
+    Or(a=out1, b=out2, out=out);
+
+}

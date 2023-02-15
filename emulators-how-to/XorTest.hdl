@@ -1,0 +1,8 @@
+CHIP XorTest {
+    IN a, b;
+    OUT abxor;
+
+    PARTS:
+    XOR(a = a, b = b, axorb = abxor);
+
+}
