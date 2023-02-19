@@ -1,0 +1,8 @@
+CHIP Dmux4wayuse {
+    IN in, sel[2];
+    OUT a, b, c, d;
+
+    PARTS:
+    DMux4Way(in=in, sel[0]=sel[0], sel[1]=sel[1], a=a, b=b, c=c, d=d);
+
+}

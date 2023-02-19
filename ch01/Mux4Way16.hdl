@@ -9,6 +9,13 @@
  *       b if sel == 01
  *       c if sel == 10
  *       d if sel == 11
+
+ // Can be created using 3 muxes
+ // s0's1'a + s0's1b + s0s1'c + s0s1d
+  = s0'( s1'a + s1b ) + s0( s1'c + s1d )
+  =  s0' Mux(a, b, s1) + s0 Mux(c, d, s1)
+  = Mux (M1, M2, s0) 
+
  */
 
 CHIP Mux4Way16 {
@@ -17,4 +24,7 @@ CHIP Mux4Way16 {
 
     PARTS:
     // Put your code here:
-}
+    Mux16(a=a, b=b, sel=sel[0], out=M1);
+    Mux16(a=c, b=d, sel=sel[0], out=M2);
+    Mux16(a=M1, b=M2, sel=sel[1], out=out);
+}   

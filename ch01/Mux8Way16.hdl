@@ -9,6 +9,11 @@
  *       b if sel == 001
  *       etc.
  *       h if sel == 111
+
+Passing Multi pin values:
+ sel[0]=sel[0],sel[1]=sel[1]
+
+ We can make using 2 mux4way16(using s1,s0) and one mux16 (sel2)
  */
 
 CHIP Mux8Way16 {
@@ -19,4 +24,7 @@ CHIP Mux8Way16 {
 
     PARTS:
     // Put your code here:
+    Mux4Way16(a=a, b=b, c=c, d=d, sel[0]=sel[0],sel[1]=sel[1], out=M1);
+    Mux4Way16(a=e, b=f, c=g, d=h, sel[0]=sel[0],sel[1]=sel[1], out=M2);
+    Mux16(a=M1, b=M2, sel=sel[2], out=out);
 }
